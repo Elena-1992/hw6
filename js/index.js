@@ -75,29 +75,29 @@ function Station() {
         if(create == true) {
             const validate = function () {
                 const addName = prompt("Add name")
+                const addSurName = prompt("Add surname")
+                const addPass = prompt("Add password")
                 if(addName.length < 2){
-                    alert("Incorrect name, try again ! ")
+                    alert(error.name)
+                    validate()
+                }else if(addSurName.length < 2){
+                    alert(error.surname)
+                    validate()
+                }else if(addPass.length < 2){
+                    alert(error.pass)
                     validate()
                 }else{
-                    const addSurName = prompt("Add surname")
-                    if(addSurName.length < 2){
-                        alert("Incorrect surname, try again ! ")
-                        validate()
-                    }else{
-                        const addPass = prompt("Add password")
-                        if(addPass.length < 2){
-                            alert("Incorrect pass, try again ! ")
-                            validate()
-                        }else{
-                            alert("You create new account")
-                            return new Worker(addName, addSurName, addPass)
-                        }
+                    alert("You create new account")
+                    return new Worker(addName, addSurName, addPass)
                     }
                 }
-            }
-            return validate()
-
-        }else{
+                const error = {
+                  name: "Name is not correct!",
+                  surname: "Incorrect surname, try again ! ",
+                  pass: "Incorrect pass, try again ! "
+                }
+                return validate()
+            }else{
             alert("Good by !")
         }
     }
